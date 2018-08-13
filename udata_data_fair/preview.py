@@ -11,11 +11,15 @@ class DataFairPreview(PreviewPlugin):
         dataset = resource.dataset
         if not (dataset.extras.get('datafairDatasetId') and dataset.extras.get('datafairOrigin')):
             return
-        return True
+        return resource.extras.get('datafairEmbed') or resource.extras.get('embedUrl')
 
     def preview_url(self, resource):
         dataset = resource.dataset
-        return '{origin}/datasets/{datasetId}/tabular'.format(
-            origin=dataset.extras.get('datafairOrigin'),
-            datasetId=dataset.extras.get('datafairDatasetId')
-        )
+        if resource.extras.get('datafairEmbed'):
+            return '{origin}/embed/dataset/{datasetId}/{embed}'.format(
+                origin=dataset.extras.get('datafairOrigin'),
+                datasetId=dataset.extras.get('datafairDatasetId'),
+                embed=resource.extras.get('datafairEmbed')
+            )
+        else:
+            return resource.extras.get('embedUrl')
