@@ -11,7 +11,7 @@ class DataFairPreview(PreviewPlugin):
         dataset = resource.dataset
         if not (dataset.extras.get('datafairDatasetId') and dataset.extras.get('datafairOrigin')):
             return
-        return resource.extras.get('datafairEmbed') or resource.extras.get('embedUrl')
+        return resource.extras.get('datafairEmbed') or resource.extras.get('apidocUrl')
 
     def preview_url(self, resource):
         dataset = resource.dataset
@@ -21,5 +21,7 @@ class DataFairPreview(PreviewPlugin):
                 datasetId=dataset.extras.get('datafairDatasetId'),
                 embed=resource.extras.get('datafairEmbed')
             )
-        else:
-            return resource.extras.get('embedUrl')
+        elif resource.extras.get('apidocUrl'):
+            return 'https://koumoul.com/openapi-viewer/?proxy=false&hide-toolbar=true&url={url}'.format(
+                url=resource.extras.get('embedUrl')
+            )
