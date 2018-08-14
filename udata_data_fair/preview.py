@@ -23,5 +23,5 @@ class DataFairPreview(PreviewPlugin):
             )
         elif resource.extras.get('apidocUrl'):
             return 'https://koumoul.com/openapi-viewer/?proxy=false&hide-toolbar=true&url={url}'.format(
-                url=resource.extras.get('embedUrl')
+                url=resource.extras.get('apidocUrl')
             )
