@@ -9,7 +9,7 @@ class DataFairPreview(PreviewPlugin):
         if not isinstance(resource, Resource):
             return
         dataset = resource.dataset
-        if (not (dataset.extras.get('datafairDatasetId') and dataset.extras.get('datafairOrigin'))) or (not (resource.extras.get('datafairDatasetId') and resource.extras.get('datafairOrigin'))):
+        if (not (dataset.extras.get('datafairDatasetId') and dataset.extras.get('datafairOrigin'))) and (not (resource.extras.get('datafairDatasetId') and resource.extras.get('datafairOrigin'))):
             return
         return resource.extras.get('datafairEmbed') or resource.extras.get('apidocUrl')
 
