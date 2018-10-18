@@ -1,4 +1,4 @@
-# data-fair
+# DataFair plugin for uData
 
 Use DataFair embeds to preview data
 
@@ -14,4 +14,12 @@ Then activate it in your `udata.cfg`:
 
 ```python
 PLUGINS = ['udata-data-fair']
+```
+
+
+## Publish
+
+```
+python setup.py sdist bdist_wheel
+twine upload dist/*
 ```
