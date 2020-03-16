@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from udata.core.dataset.preview import PreviewPlugin
 from udata.core.dataset.models import Resource
